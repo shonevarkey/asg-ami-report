@@ -22,7 +22,7 @@ def get_instance_details(instance_id):
     return '', '', ''
 
 def generate_report():
-    account_id = get_account_id()
+    #account_id = get_account_id()
     
     asg_client = boto3.client('autoscaling', region_name='us-east-1')
     ec2_client = boto3.client('ec2', region_name='us-east-1')
