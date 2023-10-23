@@ -10,8 +10,8 @@ def get_account_id():
     return response['Account']
 
 def get_instance_details(instance_id):
-    aws_region = 'us-east-1'
-    ec2_client = boto3.client('ec2', region_name=aws_region)
+    
+    ec2_client = boto3.client('ec2')
     response = ec2_client.describe_instances(InstanceIds=[instance_id])
     
     if 'Reservations' in response and len(response['Reservations']) > 0:
@@ -25,8 +25,8 @@ def get_instance_details(instance_id):
 def generate_report():
     account_id = get_account_id()
     
-    asg_client = boto3.client('autoscaling')
-    ec2_client = boto3.client('ec2')
+    asg_client = boto3.client('autoscaling', region_name='us-east-1')
+    ec2_client = boto3.client('ec2', region_name='us-east-1')
     
     paginator = asg_client.get_paginator('describe_auto_scaling_groups')
     asg_iterator = paginator.paginate(MaxRecords=100)
