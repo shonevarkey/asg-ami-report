@@ -89,7 +89,7 @@ def generate_report():
     report_directory = os.environ.get('REPORT_DIR', '.')
 
     current_datetime = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-    aws_account_name = os.environ.get('AWS_ACCOUNT', f'UNKNOWN_{current_datetime}')
+    aws_account_name = os.environ.get('AWS_ACCOUNT', f'{Account}_{current_datetime}')
     json_report_filename = f'{report_directory}/aws_report_{aws_account_name}.json'
     csv_report_filename = f'{report_directory}/aws_report_{aws_account_name}.csv'
 
