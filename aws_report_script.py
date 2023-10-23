@@ -6,8 +6,7 @@ import csv
 
 def get_account_id():
     sts_client = boto3.client('sts')
-    response = sts_client.get_caller_identity()
-    return response['Account']
+    account_id = sts_client.get_caller_identity()['Account']
 
 def get_instance_details(instance_id):
     
@@ -89,7 +88,7 @@ def generate_report():
     report_directory = os.environ.get('REPORT_DIR', '.')
 
     current_datetime = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-    aws_account_name = os.environ.get('AWS_ACCOUNT', f'{Account}_{current_datetime}')
+    aws_account_name = os.environ.get('AWS_ACCOUNT', f'{account_id}_{current_datetime}')
     json_report_filename = f'{report_directory}/aws_report_{aws_account_name}.json'
     csv_report_filename = f'{report_directory}/aws_report_{aws_account_name}.csv'
 
