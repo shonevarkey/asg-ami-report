@@ -6,7 +6,8 @@ import csv
 
 def get_account_id():
     sts_client = boto3.client('sts')
-    account_id = sts_client.get_caller_identity()['Account']
+    account_id = sts_client.get_caller_identity()
+    return response['Account']
 
 def get_instance_details(instance_id):
     
