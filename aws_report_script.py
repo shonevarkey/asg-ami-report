@@ -11,7 +11,7 @@ def get_account_id():
 
 def get_instance_details(instance_id):
     
-    ec2_client = boto3.client('ec2')
+    ec2_client = boto3.client('ec2', region_name='us-east-1')
     response = ec2_client.describe_instances(InstanceIds=[instance_id])
     
     if 'Reservations' in response and len(response['Reservations']) > 0:
