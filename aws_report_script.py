@@ -93,11 +93,11 @@ def generate_report():
     json_report_filename = f'{report_directory}/aws_report_{account_id}_{current_datetime}.json'
     csv_report_filename = f'{report_directory}/aws_report_{account_id}_{current_datetime}.csv'
 
-    report_with_account = {
-        "account_id": account_id,
-        "account_name": aws_account_name,
-        "asgs": report
-    }
+    #report_with_account = {
+    #    "account_id": account_id,
+    #    "account_name": aws_account_name,
+     #   "asgs": report
+    #}
     with open(json_report_filename, 'w') as json_report_file:
         json.dump(report_with_account, json_report_file, indent=2)
     
